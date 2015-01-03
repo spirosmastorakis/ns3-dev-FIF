@@ -13,10 +13,9 @@ from waflib.Errors import WafError
 # feature  = TaskGen.feature
 # after = TaskGen.after
 
-# https://github.com/gjcarneiro/pybindgen
-REQUIRED_PYBINDGEN_VERSION = '0.17.0.post58+ngcf00cc0'
-REQUIRED_PYGCCXML_VERSION = (1, 9, 0)
-REQUIRED_CASTXML_VERSION = '0.1'
+# https://github.com/named-data-ndnSIM/pybindgen
+REQUIRED_PYBINDGEN_VERSION = '0.17.0.post45+ng4806e4f'
+REQUIRED_PYGCCXML_VERSION = (0, 9, 5)
 
 RUN_ME=-3
 
@@ -27,7 +26,7 @@ def maybe_decode(input):
     if sys.version_info < (3,):
         return input
     else:
-        try: 
+        try:
             return input.decode('utf-8')
         except:
             sys.exc_clear()
@@ -302,7 +301,7 @@ int main ()
                                      "castxml missing")
         return
 
-    out = subprocess.Popen([castxml[0], '--version'], 
+    out = subprocess.Popen([castxml[0], '--version'],
                             stdout=subprocess.PIPE).communicate()[0]
     castxml_version_line = maybe_decode(out).split('\n', 1)[0].strip()
     ## Expecting version string such as 'castxml version 0.1-gfab9c47'
