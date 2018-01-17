@@ -357,13 +357,8 @@ def configure(conf):
     conf.load('clang_compilation_database', tooldir=['waf-tools'])
 
     env = conf.env
-    env.append_value('LINKFLAGS', '-ltensorflow')
-    env.append_value('LINKFLAGS', '-L/usr/local/lib/python2.7/site-packages/tensorflow')
-    env.append_value('LINKFLAGS', '-Wl,-rpath,/usr/local/lib/python2.7/site-packages/tensorflow')
-    env.append_value('LINKFLAGS', '-Wl,-all_load,-ltensorflow_framework')
-
-    env.append_value('LINKFLAGS', '-L/Users/spyros/Downloads/word2vec/trunk')
-    env.append_value('LINKFLAGS', '-Wl,-rpath,/Users/spyros/Downloads/word2vec/trunk')
+    #env.append_value('LINKFLAGS', '-L/Users/spyros/Downloads/word2vec/trunk')
+    env.append_value('LINKFLAGS', '-Wl,-rpath,../word2vec/trunk')
     env.append_value('LINKFLAGS', '-ldistance')
 
     if Options.options.enable_gcov:
